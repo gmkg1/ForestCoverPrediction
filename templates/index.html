@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}Predict Cover Type{% endblock %}
+
+{% block content %}
+    <h1>Forest Cover Type Prediction 🌲</h1>
+    <p>Enter the environmental measurements below to predict the forest cover type.</p>
+
+    {% if prediction %}
+    <div class="prediction-result">
+        <h2>Prediction Result</h2>
+        <p>{{ prediction }}</p>
+    </div>
+    {% endif %}
+
+    <form action="/" method="POST" class="input-form">
+        {% for col in columns %}
+        <div class="form-group">
+            <label for="{{ col }}">{{ col.replace('_', ' ') }}</label>
+            <input type="number" step="any" id="{{ col }}" name="{{ col }}" required 
+                   value="{{ request.form[col] if request.form[col] else '0' }}">
+        </div>
+        {% endfor %}
+        <button type="submit">Predict</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}Model Performance Statistics{% endblock %}
+
+{% block content %}
+    <h1>Model Performance Statistics 📊</h1>
+    
+    <div class="stats-container">
+        <h2>Overall Accuracy</h2>
+        <p class="accuracy-score">{{ "%.4f"|format(stats.accuracy) }}</p>
+    </div>
+
+    <div class="stats-container">
+        <h2>Classification Report</h2>
+        <table class="classification-table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F1-Score</th>
+                    <th>Support</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for class_id, metrics in stats.classification_report.items() %}
+                    {% if class_id not in ['accuracy', 'macro avg', 'weighted avg'] %}
+                    <tr>
+                        <td>{{ cover_type_map[class_id|int + 1] }} ({{ class_id|int + 1 }})</td>
+                        <td>{{ "%.2f"|format(metrics.precision) }}</td>
+                        <td>{{ "%.2f"|format(metrics.recall) }}</td>
+                        <td>{{ "%.2f"|format(metrics['f1-score']) }}</td>
+                        <td>{{ metrics.support }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                {% for avg_type in ['macro avg', 'weighted avg'] %}
+                    {% set metrics = stats.classification_report[avg_type] %}
+                    <tr class="average-row">
+                        <td><strong>{{ avg_type.title() }}</strong></td>
+                        <td>{{ "%.2f"|format(metrics.precision) }}</td>
+                        <td>{{ "%.2f"|format(metrics.recall) }}</td>
+                        <td>{{ "%.2f"|format(metrics['f1-score']) }}</td>
+                        <td>{{ metrics.support }}</td>
+                    </tr>
+                {% endfor %}
+            </tfoot>
+        </table>
+    </div>
+{% endblock %}

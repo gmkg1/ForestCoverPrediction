@@ -1,0 +1,112 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    line-height: 1.6;
+}
+nav {
+    background-color: #2c3e50;
+    padding: 1rem;
+    text-align: center;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+    font-size: 1.1rem;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+h1, h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+.input-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+}
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+button {
+    grid-column: 1 / -1;
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+button:hover {
+    background-color: #2980b9;
+}
+.prediction-result {
+    background-color: #eaf6ff;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+.prediction-result p {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    font-weight: bold;
+    margin: 0;
+}
+.stats-container {
+    margin-bottom: 2rem;
+}
+.accuracy-score {
+    font-size: 2rem;
+    color: #27ae60;
+    font-weight: bold;
+}
+.classification-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+.classification-table th, .classification-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+.classification-table th {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+.classification-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.classification-table tfoot {
+    font-weight: bold;
+}
